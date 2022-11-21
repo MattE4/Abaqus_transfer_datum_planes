@@ -1,12 +1,12 @@
 #
 # - Script to "copy" datum planes from assembly level to part level
-# - Makes it easier to create cuts at specific positions for submodelling
+# - Makes it easier to create cuts at specific positions for submodelling or symmetry
 #
-# - Usage:	- Copy model to create submodel (optional)
+# - Usage:	- Copy model to create submodel (optional/ as backup)
 #			- Remove unneeded instances from assembly (optional)
 #			- Create the assembly level datum planes where the cuts should be (if not yet done)
 #			- Run Script to get part level datum planes
-#			- Go to parts and make cuts with part level datum planes
+#			- Go to parts and make cuts as needed
 #
 #
 from abaqus import *
@@ -40,11 +40,11 @@ def run():
 	# query displayed datum planes
 	planes = ra.datum
 	plane_ids = []
-	for x in planes.keys():
+	for pid in planes.keys():
 		try:
-			planes[x].normal
-			planes[x].pointOn
-			plane_ids.append(x)
+			planes[pid].normal
+			planes[pid].pointOn
+			plane_ids.append(pid)
 		except:
 			pass
 
