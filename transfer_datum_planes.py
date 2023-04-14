@@ -9,6 +9,7 @@
 #			- Go to parts and make cuts as needed
 #
 #
+from __future__ import print_function
 from abaqus import *
 from abaqusConstants import *
 from caeModules import *
@@ -33,7 +34,7 @@ def run():
 	###########################################################################################
 	# check instances
 	if len(inst.keys()) == 0:
-		print 'No instance found'
+		print('No instance found')
 		return
 	
 	###########################################################################################
@@ -49,7 +50,7 @@ def run():
 			pass
 
 	if len(plane_ids) == 0:
-		print 'No datum plane found'
+		print('No datum plane found')
 		return
 
 
@@ -145,6 +146,7 @@ def run():
 				del p.features[f]
 
 	ra.regenerate()
+	print('\nTransfer done')
 
 
 ###########################################################################################
